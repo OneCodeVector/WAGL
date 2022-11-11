@@ -5,6 +5,7 @@ try:
 
 except:
     from os import system
+
     system("pip install pywin32")
     system("python Scripts/pywin32_postinstall.py -install")
     from win32 import win32gui
@@ -13,13 +14,14 @@ except:
 
 from time import sleep
 
+
 class Window:
     def __init__(self, **kwargs):
-        #data
+        # data
         self.title = None
         self.geometry = (900, 900)
-        
-        #window
+
+        # window
         self.wc = win32gui.WNDCLASS()
         self.wc.lpszClassName = 'test_win32gui_1'
         self.wc.style = win32con.CS_GLOBALCLASS | win32con.CS_VREDRAW | win32con.CS_HREDRAW
@@ -33,8 +35,9 @@ class Window:
         )
 
     def Load_Frame(self):
-        win32gui.InvalidateRect(self.win_obj,None,False)
+        win32gui.InvalidateRect(self.win_obj, None, False)
         win32gui.PumpWaitingMessages()
-        
+
     def Destroy(self):
-        win32gui.PostMessage(self.wc, win32con.WM_CLOSE,0,0)
+        win32gui.PostMessage(self.win_obj, win32con.WM_CLOSE, 0, 0)
+        win32gui.DestroyWindow(self.win_obj)
