@@ -21,7 +21,7 @@ class Window:
         self.wc.hbrBackground = win32con.COLOR_WINDOW + 1
         self.class_atom = win32gui.RegisterClass(self.wc)
         self.win_obj = win32gui.CreateWindow(self.wc.lpszClassName,
-                                             'First window EVER made in GLUM',
+                                             'First window EVER made in WAGL',
                                              win32con.WS_CAPTION | win32con.WS_VISIBLE,
                                              100, 100, 900, 900, 0, 0, 0, None)
 
