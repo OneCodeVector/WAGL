@@ -4,7 +4,7 @@ import  time
 
 Keyboard = wagl.Drivers.Keyboard
 Mouse = wagl.Drivers.Mouse()
-Window = wagl.Drivers.Graphics.Window()
+Window = wagl.Drivers.Graphics.Window(title = "HI")
 
 Mouse_Position = None
 Running = True
@@ -20,9 +20,11 @@ while Running:
 
     if Old_Mouse_Position != New_Mouse_Position:
         Mouse_Position = New_Mouse_Position
+        print(Mouse_Position)
 
     if Keyboard.Key_Pressed != None:
         if str(Keyboard.Key_Pressed) == "Key.esc":
+            Window.Destroy()
             Running = False
             sys.exit()
 
