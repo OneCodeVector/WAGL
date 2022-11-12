@@ -18,8 +18,9 @@ from time import sleep
 class Window:
     def __init__(self, **kwargs):
         # data
-        self.title = None
-        self.geometry = (900, 900)
+        self.title = kwargs.get("title", None)
+        self.geometry = kwargs.get("geometry", (900, 900))
+        self.border_enabled = kwargs.get("border_enabled", win32con.WS_OVERLAPPEDWINDOW)
 
         # window
         self.wc = win32gui.WNDCLASS()
@@ -30,9 +31,13 @@ class Window:
         self.win_obj = win32gui.CreateWindow(
             self.wc.lpszClassName,
             self.title,
-            win32con.WS_CAPTION | win32con.WS_VISIBLE,
+            win32con.WS_CAPTION | win32con.WS_VISIBLE | self.border_enabled,
             100, 100, *self.geometry, 0, 0, 0, None
         )
+
+    def Draw_Line(self):
+        return
+
 
     def Load_Frame(self):
         win32gui.InvalidateRect(self.win_obj, None, False)
