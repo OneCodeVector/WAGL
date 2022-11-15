@@ -1,10 +1,12 @@
 import wagl
 import sys
 import  time
+import win32api
 
 Keyboard = wagl.Drivers.Keyboard
 Mouse = wagl.Drivers.Mouse()
 Window = wagl.Drivers.Graphics.Window(title = "HI")
+Sound = wagl.Drivers.Sound()
 
 Mouse_Position = None
 Running = True
@@ -23,6 +25,8 @@ while Running:
         print(Mouse_Position)
 
     if Keyboard.Key_Pressed != None:
+        if str(Keyboard.Key_Pressed) == "1":
+            Sound.Play_Freq(500,1000)
         if str(Keyboard.Key_Pressed) == "Key.esc":
             Window.Destroy()
             Running = False
